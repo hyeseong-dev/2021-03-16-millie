@@ -43,7 +43,7 @@ class UserBook(models.Model):
 
 class SMSAuthRequest(TimeStampedModel):
     phone_number = models.CharField(verbose_name='휴대폰 번호', primary_key=True, max_length=50)
-    phone_number = models.IntegerField(verbose_name='인증 번호')
+    auth_number  = models.IntegerField(verbose_name='인증 번호')
 
     class Meta:
         db_table = 'user_books'
