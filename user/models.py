@@ -88,11 +88,11 @@ class SMSAuthRequest(TimeStampedModel):
         return string_base64 
     
     @classmethod
-    def check_auth_number(cls, p_num, c_num):
+    def check_auth_number(cls, phone_num, auth_num):
         time_limit = timezone.now() - datetime.timedelta(minutes = 5)
         result     = cls.objects.filter(
-            phone_number = p_num,
-            auth_number = c_num,
+            phone_number = phone_num,
+            auth_number = auth_num,
             modified__gte = time_limit,
         )
         return result.exists()
