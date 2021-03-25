@@ -142,7 +142,7 @@ class SignInWithKakaoView(View):
             access_token = generate_token(user.id)
 
             # 처음 로그인한 경우이거나 회원가입한 경우라면 User클래스의 인스턴스가 db에 생성되면 바로~! Library를 만들어준다. 
-            if not Library.objects.filter(user__kakao_id=str(kakao.id)) # 현재 카톡에서 넘겨주는 id는 int이지만 추후 str으로 바뀔 변동성을 생각하여 애초에 모델에서 컬럼 타입을 문자로 잡아 언제든 유용하게 대응할수 있도록함.
+            if not Library.objects.filter(user__kakao_id=str(kakao.id)): # 현재 카톡에서 넘겨주는 id는 int이지만 추후 str으로 바뀔 변동성을 생각하여 애초에 모델에서 컬럼 타입을 문자로 잡아 언제든 유용하게 대응할수 있도록함.
                 Library.objects.create(user_id=user.id, name=user.nickname, image_url='')
             return JsonResponse({'message':'SUCCESS', 'access_token':access_token}, status=200)
         except KeyError:

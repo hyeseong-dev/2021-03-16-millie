@@ -22,7 +22,7 @@ class User(TimeStampedModel):
     image_url       = models.URLField(max_length=200, null=True)
     phone_number    = models.CharField(max_length=11, null=True)
     kakao_id        = models.CharField(max_length=45, null=True)
-    books           = models.ManyToManyField('book.Book', through=UserBook)
+    books           = models.ManyToManyField('book.Book', through='UserBook')
 
     class Meta: 
         db_table = 'users'
@@ -31,7 +31,7 @@ class UserBook(TimeStampedModel):
     user       = models.ForeignKey(User, on_delete=models.CASCADE)
     book       = models.ForeignKey('book.Book', on_delete=models.CASCADE)
     page       = models.IntegerField()
-    time       = models.IntegerFiepage()
+    time       = models.IntegerField()
 
     class Meta:
         db_table = 'user_books'
@@ -43,7 +43,7 @@ class SMSAuthRequest(TimeStampedModel):
     auth_number  = models.IntegerField(verbose_name='인증 번호')
 
     class Meta:
-        db_table = 'user_books'
+        db_table = 'sms_auth_requests'
 
     def save(self, *args, **kwargs): # save 메서드 오버라이딩
         self.auth_number = rendint(100000, 1000000)
@@ -60,7 +60,7 @@ class SMSAuthRequest(TimeStampedModel):
             'contentType'   : 'COMM',
             'from'          : '01011112222', # 등록된 발신번호
             'content'       : '[테스트] 인증 번호 [{}]를 입력해주세요.'.format(self.auth_number),
-            'messages'      : [{'to'}: self.phone_number] 
+            'messages'      : [{'to': self.phone_number}] 
         }
 
         timeStamp      = str(int(time.time() * 1000)) # time 모듈의 time() 함수는 현재 Unix timestamp을 소수로 리턴, 결과로 13자리 정수 형태의 문자열로 변환

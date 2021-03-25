@@ -1,6 +1,6 @@
 from django.db.models import(
     Sum,
-    Ang,
+    Avg,
     Q,
     F,
 )
@@ -26,7 +26,7 @@ def get_reading_numeric(book_id):
     avg_finish = 0.0
     avg_reading_minutes = 0.0
 
-    if finished_users.exists()
+    if finished_users.exists():
         avg_finish = finished_users.count() / total_users * 100
         avg_reading_minutes = finished_users.aggregate(read_time=Avg('time'))['read_time']
 
@@ -42,7 +42,7 @@ def get_reading_numeric(book_id):
     category_expected_reading_minutes = 0.0
 
     if finished_users.exists():
-        category_avg_finish = finished)users.count()/total_users.count() * 100
+        category_avg_finish = finished_users.count()/total_users.count() * 100
         category_expected_reading_minutes = finished_users.aggregate(read_time=Avg('time'))['read_time'] # 집계함수의 반환값은 키워드인자의 키값과 오른쪽의 할당하는 값으로 딕셔너리를 반환함.
 
     return {
