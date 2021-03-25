@@ -347,7 +347,7 @@ class ReviewTestCase(TestCase):
             user_id=self.user.id,
             book_id=self.book.id,
             contents=self.DUMMY_REVIEW_CONTENTS,
-            created_at='2021.03.21'
+            created='2021.03.21'
         )
         self.userbook=UserBook.objects.create(
             id = 1,
@@ -405,7 +405,7 @@ class ReviewTestCase(TestCase):
                 'nick_name'  : self.DUMMY_NICKNAME,
                 'user_img'   : self.DUMMY_IMAGE_URL,
                 'content'    : self.DUMMY_REVIEW_CONTENTS,
-                'created_at' : self.review.created_at.strftime('%Y.%m.%d'),
+                'created' : self.review.created.strftime('%Y.%m.%d'),
             }]
         })
         self.assertEqual(response.status_code, 200)
@@ -492,7 +492,7 @@ class ReviewLikeTestCase(TestCase):
             user_id    = self.user.id,
             book_id    = self.book.id,
             contents   = self.DUMMY_REVIEW_CONTENTS,
-            created_at = '2020.12.01'
+            created = '2020.12.01'
         )
 
         self.userbook = UserBook.objects.create(
