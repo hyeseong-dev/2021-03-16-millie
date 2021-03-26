@@ -12,8 +12,8 @@ class Library(models.Model):
 
 
 class LibraryBook(models.Model):
-    library     = models.ForeignKey(Library, on_delete=models.CASCADE)
-    book        = models.ForeignKey('book.Book', on_delete=models.CASCADE)
+    library     = models.ForeignKey(Library, on_delete=models.CASCADE) # Library 정참조
+    book        = models.ForeignKey('book.Book', on_delete=models.CASCADE) # Book 정참조
     created_at  = models.DateTimeField(auto_now_add=True)
 
     class Meta:

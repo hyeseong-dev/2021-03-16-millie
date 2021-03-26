@@ -9,7 +9,7 @@ class Category(models.Model):
 
 
 class Keyword(models.Model):
-    name = models.CharField(max_length=45)
+    name = models.CharField(max_length=45) # 종합, 고양이, 
 
     class Meta:
         db_table = 'keywords'
