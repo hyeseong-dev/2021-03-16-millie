@@ -1,6 +1,6 @@
 ## CONTENTS⛄
 
-!youtube[Kwf9UBttHEo]
+https://youtu.be/Kwf9UBttHEo
 
 ### 목표🎖
 [밀림의 사서](https://www.milliem.co.kr//) SERVICE CLONE
